@@ -23,6 +23,24 @@ app.use(express.static(publicPath));
 io.on('connection' , (socket) => {
   console.log('New user connected');
 
+  //instead of listenting to event, u are creating the event
+  //specify any email specs
+  // socket.emit('newEmail', {
+  //   from: 'jaoovinaa@gmail.com',
+  //   text: 'How are you?',
+  //   createdAt: 123
+  // });
+
+  socket.emit('newMessage', {
+    from: 'janetjackson@gmail.com',
+    text:'okok, see you then',
+    createdAt: 123123
+  });
+
+  socket.on('createMessage', (message) => {
+    console.log('createMessage', message);
+  });
+
   socket.on('disconnect', () => {
     console.log('User was disconnected')
   })
