@@ -23,6 +23,18 @@ app.use(express.static(publicPath));
 io.on('connection' , (socket) => {
   console.log('New user connected');
 
+  socket.emit('newMessage', {
+    from: 'Admin',
+    text: 'Welcome to the Chat App',
+    createdAt: new Date().getTime()
+  })
+
+  socket.broadcast.emit('newMessage', {
+    from: 'Admin',
+    text: 'New user joined',
+    createdAt: new Date().getTime()
+  })
+
   socket.on('createMessage', (message) => {
     console.log('createMessage', message);
     //socket.emit sends event to a single connection. io.emit send s to all connections
@@ -31,12 +43,20 @@ io.on('connection' , (socket) => {
       text: message.text,
       createdAt: new Date().getTime()
     });
+    //to broadcast, we need to specify the individual socket
+    // socket.broadcast.emit('newMessage', {
+    //   from: message.from,
+    //   text: message.text,
+    //   createdAt: new Date().getTime()
+    // });
   });
 
   socket.on('disconnect', () => {
     console.log('User was disconnected')
   })
 });
+
+//broadcasting is the term for emiting an event to evrybody but one specific user
 
 //it calls exact same method as http.createServer
 server.listen(port, () => {
