@@ -2,6 +2,7 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title></title>
     <link rel="stylesheet" href="/css/styles.css">
   </head>
@@ -22,12 +23,38 @@
         </form>
         <button id="send-location">Send Location</button>
       </div>
-
     </div>
+
+    <script id="message-template" type="text/template">
+      <li class = "message">
+        <div class = "message__title">
+          <h4>{{from}}</h4>
+          <span>{{createdAt}}</span>
+        </div>
+        <div class = "message__body">
+          <p>{{text}}</p>
+        </div>
+      </li>
+    </script>
+
+    <script id="location-message-template" type="text/template">
+      <li class = "message">
+        <div class = "message__title">
+          <h4>{{from}}</h4>
+          <span>{{createdAt}}</span>
+        </div>
+        <div class = "message__body">
+          <p>
+            <a href= "{{url}}" target="_blank">
+          </p>
+        </div>
+      </li>
+    </script>
 
     <script src = "/socket.io/socket.io.js" type="text/javascript"></script>
     <script src = "/js/libs/jquery-3.3.1.min.js"></script>
     <script src = "js/libs/moment.js"></script>
+    <script src = "js/libs/mustache.js"></script>
     <script src = "/js/index.js"></script>
   </body>
 </html>
