@@ -102,3 +102,18 @@ locationButton.on('click', function(){
     alert('Unable to fetch location');
   })
 });
+
+window.onbeforeunload = function(event){
+  //store the messages into sessionStorage
+  sessionStorage.setItem('ol', jQuery('#messages').html());
+  return undefined;
+};
+
+$(document).ready(function(){
+  if (sessionStorage.getItem('ol')) {
+  // Restore the contents of the ol (message contents)
+    var ol = sessionStorage.getItem('ol');
+    jQuery('#messages').html(ol);
+    scrollToBottom();
+  }
+});
