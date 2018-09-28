@@ -2,9 +2,9 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  font-family: 'Krub', sans-serif;
   font-weight: 300;
-  font-size: .95rem;
+  font-size: 1rem;
 }
 
 ul, li {
@@ -17,19 +17,32 @@ h3 {
   font-size: 1.5rem;
 }
 
+.centered-form-title{
+  font-size: 5rem;
+  font-style: italic;
+  color: rgb(104, 104, 104);
+  margin-bottom: 2rem;
+}
+
 button {
   border: none;
-  background: #265f82;
+  background: rgb(206, 118, 118);
   color: white;
   cursor: pointer;
   padding: 10px;
   transition: background .3s ease;
+  border-radius: 3px;
+}
+
+#send-location:hover {
+  background: rgb(198,235,234);
+  color: rgb(39, 39, 39);
 }
 
 button:hover {
   border: none;
-  background: #1F4C69;
-  color: white;
+  background: rgb(255, 255, 255);
+  color: rgb(206, 118, 118);;
   padding: 10px;
 }
 
@@ -41,27 +54,28 @@ button:disabled {
 .centered-form {
   display: flex;
   align-items: center;
+  flex-direction: column;
   height: 100vh;
   width: 100vw;
   justify-content: center;
-  background: -moz-linear-gradient(125deg, rgba(39,107,130,1) 0%, rgba(49,84,129,1) 100%); /* ff3.6+ */
-  background: -webkit-gradient(linear, left top, right bottom, color-stop(0%, rgba(49,84,129,1)), color-stop(100%, rgba(39,107,130,1))); /* safari4+,chrome */
-  background: -webkit-linear-gradient(125deg, rgba(39,107,130,1) 0%, rgba(49,84,129,1) 100%); /* safari5.1+,chrome10+ */
-  background: -o-linear-gradient(125deg, rgba(39,107,130,1) 0%, rgba(49,84,129,1) 100%); /* opera 11.10+ */
-  background: -ms-linear-gradient(125deg, rgba(39,107,130,1) 0%, rgba(49,84,129,1) 100%); /* ie10+ */
-  background: linear-gradient(325deg, rgba(39,107,130,1) 0%, rgba(49,84,129,1) 100%); /* w3c */
+  background: rgb(198,235,234);
+  background: radial-gradient(circle, rgba(198,235,234,1) 0%, rgba(177,223,206,1) 96%);
+
 }
 
 .centered-form__form {
-  background: rgba(250, 250, 250, 0.9);
-  border: 1px solid #e1e1e1;
+  text-align: center;
+  background: rgb(107, 107, 107);
   border-radius: 5px;
-  padding: 0px 20px;
+  padding: 20px 40px;
   margin: 20px;
   width: 230px;
+  box-shadow: 2px 2px 2px #a8a8a8;
+  padding: 0 1rem;
 }
 
 .form-field {
+  color: whitesmoke;
   margin: 20px 0;
 }
 
@@ -77,6 +91,7 @@ button:disabled {
 .form-field input, .form-field select {
   border: 1px solid #e1e1e1;
   padding: 10px;
+  border-radius: 3px;
 }
 
 .chat {
@@ -87,16 +102,12 @@ button:disabled {
   overflow-y: scroll;
   width: 260px;
   height: 100vh;
-  background: -moz-linear-gradient(125deg, rgba(39,107,130,1) 0%, rgba(49,84,129,1) 100%); /* ff3.6+ */
-  background: -webkit-gradient(linear, left top, right bottom, color-stop(0%, rgba(49,84,129,1)), color-stop(100%, rgba(39,107,130,1))); /* safari4+,chrome */
-  background: -webkit-linear-gradient(125deg, rgba(39,107,130,1) 0%, rgba(49,84,129,1) 100%); /* safari5.1+,chrome10+ */
-  background: -o-linear-gradient(125deg, rgba(39,107,130,1) 0%, rgba(49,84,129,1) 100%); /* opera 11.10+ */
-  background: -ms-linear-gradient(125deg, rgba(39,107,130,1) 0%, rgba(49,84,129,1) 100%); /* ie10+ */
-  background: linear-gradient(325deg, rgba(39,107,130,1) 0%, rgba(49,84,129,1) 100%); /* w3c */
+  background: rgb(199, 119, 119);
+  border: 3px solid  rgb(201, 148, 148)
 }
 
 .chat__sidebar h3 {
-  color: #e6eaee;
+  color: #e7e8e9;
   margin: 10px 20px;
   text-align: left;
 }
@@ -156,6 +167,7 @@ button:disabled {
 
 .message {
   padding: 10px;
+  
 }
 
 .message__title {
@@ -170,6 +182,13 @@ button:disabled {
 
 .message__title span {
   color: #999;
+}
+
+.message-body__content{
+  background: rgb(199, 93, 93);
+  padding: 0.3rem 0.5rem;
+  border-radius: 3px;
+  color: white;
 }
 
 @media (max-width: 600px) {

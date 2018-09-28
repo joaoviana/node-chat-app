@@ -20,10 +20,6 @@ var users = new Users();
 //config static midware
 app.use(express.static(publicPath));
 
-//registers an event listener
-//listens for a new connection, and do something after that
-//persistent technology, client an server both keep the communication channel open, as long as they want to
-//when connection drops, client is gonna start to reconnect
 io.on('connection' , (socket) => {
   console.log('New user connected');
 
@@ -33,13 +29,13 @@ io.on('connection' , (socket) => {
       return callback('Name and room name are required.');
     }
 
-    socket.join(params.room);
+    socket.join(params.room.toLowerCase());
     users.removeUser(socket.id);
     users.addUser(socket.id, params.name,params.room);
 
     io.to(params.room).emit('updateUserList' , users.getUserList(params.room));
 
-    socket.emit('newMessage', generateMessage('Admin', 'Welcome to the chat app'));
+    socket.emit('newMessage', generateMessage('Admin', 'feel free to talk!'));
     socket.broadcast.to(params.room).emit('newMessage', generateMessage('Admin', `${params.name} has joined`));
     callback();
   });
@@ -71,9 +67,6 @@ io.on('connection' , (socket) => {
   })
 });
 
-//broadcasting is the term for emiting an event to evrybody but one specific user
-
-//it calls exact same method as http.createServer
 server.listen(port, () => {
   console.log(`Server is up on port ${port}`);
 });
