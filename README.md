@@ -4,6 +4,7 @@
 
 A Web Chat App built with Node.js and Socket.io - server set up with Express. Users can join a certain chat room with a required username. 
 
+[Live Demo](https://struggling-student-chat.herokuapp.com/)
 
 ## Setting up 
 
